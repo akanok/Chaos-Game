@@ -51,7 +51,7 @@ public class MainWindow implements ActionListener{
 		shapeMenu = new JComboBox<Shapes>( Shapes.values() );
 		shapeMenu.addActionListener( selectionListener() );
 
-		iterationsLabel = new JLabel("Insert the number of points to generate: ");
+		iterationsLabel = new JLabel("Insert the number of iterations: ");
 		NumberFormatter intFormatter = new NumberFormatter();
 		intFormatter.setValueClass(Integer.class);
 		intFormatter.setMinimum(0);
