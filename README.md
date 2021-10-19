@@ -5,33 +5,32 @@ For more information abaout *chaos game* and *fractal* visit the [Algorithm Arch
 
 
 ### Table of contents
-* [General info](#general-info)
-* [Requirements](#requirements)
-* [Run](#run)
+* [About The Project](#about-the-project)
+* [Getting Started](#getting-started)
+* [Built With](#built-with)
+* [License](#license)
 
-## General info
+## About The Project
 Chaos game is a method to create **fractals** using an initial point selected at random inside a polygon and then applying a rule to find the next point. After some iterations we will often (depending on the rule) start seeing the shape.
 
 This project aim is to create a **gui** that allows to simple generate fractal using the above method.
 
-The main window allows to select from three polygons (Triangle, Squere, Pentagon) or to create yours (Custom) by choosing the number of sides (wich obviously must be greater then three).
+The main window allows to select from three polygons (Triangle, Squere, Pentagon) or to create yours (Custom) by choosing the number of sides (wich obviously must be greater then three) and to insert the number of iterations.
 
-***IMAGES***
-
-You can also select two different rules to generate the points: both of them starts from a random point inside the shape, select a vertex of the polygon and then choose the mid point of the distance between the previous point and the vertex as the new point form wich reiterate this algoritm.
-
+You can also select two different rules to generate the points: both of them starts from a random point inside the shape, select a vertex of the polygon and then choose the mid point of the distance between the previous point and the vertex as the new point form wich reiterate this algoritm. <br />
 In the first rule (the default one for the triangle) the vertex is choosen randomly, while in the second one (the default for other shapes) is added one condition: it must be different from the previous one.
 
 ***IMAGES***
 
-In the end you can insert the number of iterations.
-## Requirements
+
+## Getting Started
+
+### Prerequisites
 This project requires:
 
 + Java 11
 
-
-## Run
+### Quick start
 To run this project from the commnad line (on Unix systems) follw this steps:
 
 1. Clone the reposiory: ``git clone git@github.com:akanok/Chaos-Game.git`` or ``git clone https://github/akanok/Chaos-Game.git``
@@ -42,6 +41,9 @@ To run this project from the commnad line (on Unix systems) follw this steps:
 6. Run the app: ``java chaos.game.Main``
 
 
+## Built With
+* JDK 11
+* Eclipse
 
-java gui-application fractals chaos-game
 
+## License
