@@ -21,6 +21,24 @@ You can also select two different rules to generate the points: both of them sta
 In the first rule (the default one for the triangle) the vertex is choosen randomly, while in the second one (the default for other shapes) is added one condition: it must be different from the previous one.
 
 ![Alt text](images/Main_Default.png)
+DescriptionA
+
+![Alt text](images/Trinagle.png)
+
+![Alt text](images/Square.png)
+
+![Alt text](images/Pentagon.png)
+
+![Alt text](images/Main_Custom.png)
+DescriptionB
+
+![Alt text](images/Esagon.png)
+
+
+
+
+
+
 
 ## Getting Started
 
