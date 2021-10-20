@@ -33,7 +33,7 @@ This project requires:
 ### Quick start
 To run this project from the commnad line (on Unix systems) follw this steps:
 
-1. Clone the reposiory: ``git clone git@github.com:akanok/Chaos-Game.git`` or ``git clone https://github/akanok/Chaos-Game.git``
+1. Clone the reposiory:<br /> ``git clone git@github.com:akanok/Chaos-Game.git`` or  ``git clone https://github/akanok/Chaos-Game.git``
 2. Move into the project folder: ``cd Chaos-Game/``
 3. Create _bin_ folder for _.class_ files: ``mkdir bin``
 4. Compile java files: ``javac -sourcepath src/ -d bin/ src/chaos/game/*.java``
@@ -42,8 +42,10 @@ To run this project from the commnad line (on Unix systems) follw this steps:
 
 
 ## Built With
-* JDK 11
-* Eclipse
+* [JDK 11](https://www.oracle.com/it/java/technologies/javase/jdk11-archive-downloads.html)
+<!-- * [Eclipse IDE](https://www.eclipse.org/ide/) -->
 
 
 ## License
+This project is licensed under MIT. <br />
+Please see the [LICENSE](/LICENSE) file for details.
