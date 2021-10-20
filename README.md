@@ -20,7 +20,7 @@ The main window allows to select from three polygons (Triangle, Squere, Pentagon
 You can also select two different rules to generate the points: both of them starts from a random point inside the shape, select a vertex of the polygon and then choose the mid point of the distance between the previous point and the vertex as the new point form wich reiterate this algoritm. <br />
 In the first rule (the default one for the triangle) the vertex is choosen randomly, while in the second one (the default for other shapes) is added one condition: it must be different from the previous one.
 
-***IMAGES***
+[TestImage](images/Main_Default.png)
 
 
 ## Getting Started
