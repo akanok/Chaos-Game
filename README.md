@@ -20,37 +20,34 @@ The main window allows to select from three polygons (Triangle, Squere, Pentagon
 You can also select two different rules to generate the points: both of them starts from a random point inside the shape, select a vertex of the polygon and then choose the mid point of the distance between the previous point and the vertex as the new point form wich reiterate this algoritm. <br />
 In the first rule (the default one for the triangle) the vertex is choosen randomly, while in the second one (the default for other shapes) is added one condition: it must be different from the previous one.
 
+<br />
+<br />
 
-
-Main window with default settings for Triangle
+<p style="text-align: center;">Main window with default settings for Triangle</p>
 
 ![Main window: Default settings](images/Main_Default.png)
 
-
-Trinagle fractal (also known as *Sierpiński triangle*)
+<p style="text-align: center;">Trinagle fractal (also known as *Sierpiński triangle*)</p>
 
 ![Shape window: Trinagle](images/Trinagle.png)
 
-
-Square fractal
+<p style="text-align: center;">Square fractal</p>
 
 ![Shape window: Square](images/Square.png)
 
-
-Pentagon fractal
+<p style="text-align: center;">Pentagon fractal</p>
 
 ![Shape window: Pentagon](images/Pentagon.png)
+<br />
 
-
-
-Main window with custom settings for Esagon
+<p style="text-align: center;">Main window with custom settings for Esagon</p>
 
 ![Main window: Custom settings](images/Main_Custom.png)
+<br />
 
+<p style="text-align: center;">Esagon fractal</p>
 
-Esagon fractal
-
-![Shape window: Esagon](images/Esagon.png)
+![Shape window: Esagon](images/Esagon.png)<br />
 
 
 
