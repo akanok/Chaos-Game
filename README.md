@@ -27,14 +27,17 @@ In the first rule (the default one for the triangle) the vertex is choosen rando
 <p> Main window with default settings for Triangle </p>
 
 <img src="images/Main_Default.png" alt="Main window: Default settings" >
+<br />
 
 <p> Trinagle fractal (also known as *Sierpiński triangle*) </p>
 
-<img src="./images/Trinagle.png" alt="Shape window: Trinagle" >
+<img src="images/Trinagle.png" alt="Shape window: Trinagle" >
+<br />
 
 <p> Square fractal </p>
 
 <img src="images/Square.png" alt="Shape window: Square" >
+<br />
 
 <p> Pentagon fractal </p>
 
@@ -44,11 +47,12 @@ In the first rule (the default one for the triangle) the vertex is choosen rando
 
 <p> Main window with custom settings for Esagon </p>
 
-<p> ![Main window: Custom settings](images/Main_Custom.png) </p>
+<img src="images/Main_Custom.png" alt="Main window: Custom settings" >
+<br />
 
 <p> Esagon fractal </p>
 
-<p> ![Shape window: Esagon](images/Esagon.png) </p>
+<img src="images/Esagon.png" alt="Shape window: Esagon" >
 
 </div>
 
