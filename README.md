@@ -23,29 +23,29 @@ In the first rule (the default one for the triangle) the vertex is choosen rando
 <br />
 <br />
 
-<p style="text-align: center;">Main window with default settings for Triangle</p>
+<p align="center">Main window with default settings for Triangle</p>
 
 ![Main window: Default settings](images/Main_Default.png)
 
-<p style="text-align: center;">Trinagle fractal (also known as *Sierpiński triangle*)</p>
+<p align="center">Trinagle fractal (also known as *Sierpiński triangle*)</p>
 
 ![Shape window: Trinagle](images/Trinagle.png)
 
-<p style="text-align: center;">Square fractal</p>
+<p align="center">Square fractal</p>
 
 ![Shape window: Square](images/Square.png)
 
-<p style="text-align: center;">Pentagon fractal</p>
+<p align="center">Pentagon fractal</p>
 
 ![Shape window: Pentagon](images/Pentagon.png)
 <br />
 
-<p style="text-align: center;">Main window with custom settings for Esagon</p>
+<p align="center">Main window with custom settings for Esagon</p>
 
 ![Main window: Custom settings](images/Main_Custom.png)
 <br />
 
-<p style="text-align: center;">Esagon fractal</p>
+<p align="center">Esagon fractal</p>
 
 ![Shape window: Esagon](images/Esagon.png)<br />
 
