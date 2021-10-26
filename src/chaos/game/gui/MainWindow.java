@@ -19,14 +19,15 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.text.NumberFormatter;
 
-import chaos.game.ChaosGameGenerator.Rules;
 import chaos.game.exception.LessThanTowSidesException;
+import chaos.game.rule.Rule;
+import chaos.game.rule.SquareRule;
+import chaos.game.rule.TriangleRule;
 
 
 public class MainWindow implements ActionListener{
 
-	public enum Shapes{ TRIANGLE, SQUARE, PENTAGON, CUSTOM }
-
+	private enum Shapes{ TRIANGLE, SQUARE, PENTAGON, CUSTOM }
 
 	private final JFrame mainFrame;
 	private final JPanel mainPanel;
@@ -36,9 +37,8 @@ public class MainWindow implements ActionListener{
 	private final JFormattedTextField sidesNumber;
 	private final JLabel iterationsLabel;
 	private final JFormattedTextField iterationsNumber;
-	private final JCheckBox ruleOption;
+	//private final JCheckBox ruleOption;
 	private final JButton startButton;
-
 
 	public MainWindow() {
 		mainFrame = new JFrame();
@@ -51,16 +51,6 @@ public class MainWindow implements ActionListener{
 		shapeMenu = new JComboBox<Shapes>( Shapes.values() );
 		shapeMenu.addActionListener( selectionListener() );
 
-		iterationsLabel = new JLabel("Insert the number of iterations: ");
-		NumberFormatter intFormatter = new NumberFormatter();
-		intFormatter.setValueClass(Integer.class);
-		intFormatter.setMinimum(0);
-		intFormatter.setMaximum(Integer.MAX_VALUE);
-		intFormatter.setAllowsInvalid(false);
-		intFormatter.setCommitsOnValidEdit(true);
-		iterationsNumber = new JFormattedTextField(intFormatter);
-		iterationsNumber.setText("100000");
-
 		sidesLabel = new JLabel("Number of polygon sides(>=3) : ", SwingConstants.CENTER);
 		sidesLabel.setEnabled(false);
 		NumberFormatter biggerThen3Formatter = new NumberFormatter();
@@ -71,13 +61,23 @@ public class MainWindow implements ActionListener{
 		biggerThen3Formatter.setCommitsOnValidEdit(false);
 		sidesNumber = new JFormattedTextField(biggerThen3Formatter);
 		sidesNumber.setEnabled(false);
-
-		ruleOption = new JCheckBox("Use different rule to generate red points",false);
 		
+		iterationsLabel = new JLabel("Insert the number of iterations: ");
+		NumberFormatter intFormatter = new NumberFormatter();
+		intFormatter.setValueClass(Integer.class);
+		intFormatter.setMinimum(0);
+		intFormatter.setMaximum(Integer.MAX_VALUE);
+		intFormatter.setAllowsInvalid(false);
+		intFormatter.setCommitsOnValidEdit(true);
+		iterationsNumber = new JFormattedTextField(intFormatter);
+		iterationsNumber.setText("100000");
+
+		//ruleOption = new JCheckBox("Use different rule to generate red points",false);
+
 		startButton = new JButton("Start!");
 		startButton.addActionListener(this);
 
-		
+
 		mainPanel.add(shapeLabel);
 		mainPanel.add(shapeMenu);
 
@@ -87,7 +87,7 @@ public class MainWindow implements ActionListener{
 		mainPanel.add(iterationsLabel);
 		mainPanel.add(iterationsNumber);
 
-		mainPanel.add(ruleOption);
+		//mainPanel.add(ruleOption);
 		mainPanel.add(startButton);
 
 
@@ -105,24 +105,29 @@ public class MainWindow implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 
 		int iterations = (iterationsNumber.getValue() ==null)?0:(int)iterationsNumber.getValue();
-		int sides = (sidesNumber.getValue()==null)?0:(int)sidesNumber.getValue();
-		Rules rule = (ruleOption.isSelected())?Rules.RULE2:Rules.RULE1;
+		int sides;
 
+		switch ((Shapes) shapeMenu.getSelectedItem()) {
+			case CUSTOM:
+				sides =  (sidesNumber.getValue()==null)?0:(int)sidesNumber.getValue();
+				break;
+			case SQUARE:
+				sides = 4;	
+				break;
+			case PENTAGON:
+				sides = 5;
+				break;
+			default: // TRIANGLE 
+				sides = 3;
+				break;
+		}
+
+		Rule rule = new SquareRule(iterations, 0.5 );
+		
+		
 		try {
-			switch ((Shapes) shapeMenu.getSelectedItem()) {
-				case CUSTOM:
-					new ShapeWindow(Shapes.CUSTOM,iterations, sides, rule);
-					break;
-				case SQUARE:
-					new ShapeWindow(Shapes.SQUARE,iterations, 0, rule);
-					break;
-				case PENTAGON:
-					new ShapeWindow(Shapes.PENTAGON,iterations, 0, rule);
-					break;
-				default: // TRIANGLE 
-					new ShapeWindow(Shapes.TRIANGLE,iterations, 0, rule);
-					break;
-			}
+			new ShapeWindow(sides, rule);
+			
 		}catch (LessThanTowSidesException e) {
 			JOptionPane.showMessageDialog(null,
 					("The number of sides is: " + e.getSidesNumber() + "\nA polygon must have at least 3 sides!"),
@@ -137,16 +142,16 @@ public class MainWindow implements ActionListener{
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Shapes selection = (Shapes)shapeMenu.getSelectedItem();
-				
+
 				if (selection == Shapes.TRIANGLE) {
-					ruleOption.setSelected(false);
+					//ruleOption.setSelected(false);
 					sidesLabel.setEnabled(false);
 					sidesNumber.setEnabled(false);
 					sidesNumber.setText("");
 				} else {
-					ruleOption.setSelected(true);
+					//ruleOption.setSelected(true);
 					if (selection == Shapes.CUSTOM) {
 						sidesLabel.setEnabled(true);
 						sidesNumber.setEnabled(true);

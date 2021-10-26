@@ -5,7 +5,7 @@ import java.util.Random;
 
 
 public class ChaosGameGenerator {
-	
+	/*
 	public static enum Rules{ RULE1, RULE2 }
 	
 	
@@ -50,7 +50,7 @@ public class ChaosGameGenerator {
 		}
 		return newVertex;
 	}
-	
+	*/
 	
 }
 

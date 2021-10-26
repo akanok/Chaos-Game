@@ -62,7 +62,7 @@ This project requires:
 ### Quick start
 To run this project from the commnad line (on Unix systems) follw this steps:
 
-1. Clone the reposiory:<br /> ``git clone git@github.com:akanok/Chaos-Game.git`` or  ``git clone https://github.com/akanok/Chaos-Game.git``
+1. Clone the reposiory: ``git clone git@github.com:akanok/Chaos-Game.git`` <br />or  ``git clone https://github.com/akanok/Chaos-Game.git``
 2. Move into the project folder: ``cd Chaos-Game/``
 3. Create _bin_ folder for _.class_ files: ``mkdir bin``
 4. Compile java files: ``javac -sourcepath src/ -d bin/ src/chaos/game/*.java``
