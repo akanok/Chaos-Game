@@ -5,9 +5,10 @@ import java.util.Random;
 
 public class SquareRule extends PolygonRule{
 
+	/*
 	public SquareRule(int iterations, double distanceFromOldPoint) {
 		super(iterations, distanceFromOldPoint);
-	}
+	}*/
 
 
 	@Override
@@ -20,4 +21,10 @@ public class SquareRule extends PolygonRule{
 		return newVertex;
 	}
 
+	
+	@Override
+	public String toString() {
+		return "Defalut rule for squares";
+	}
+	
 }

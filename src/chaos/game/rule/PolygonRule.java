@@ -3,19 +3,25 @@ package chaos.game.rule;
 import java.awt.Point;
 import java.util.Random;
 
-public  abstract class PolygonRule implements Rule {
+public abstract class PolygonRule implements Rule {
 
 	private final Random randomGenerator = new Random();
-	private final int iterations;
-	private final double distanceFromOldPoint;
+	private int iterations;
+	private double distanceFromOldPoint;
 
 	
-	protected PolygonRule(int iterations, double distanceFromOldPoint) {
+	protected PolygonRule() {
+		super();
+	}
+
+
+	@Override
+	public final void setParameters(int iterations, double distanceFromOldPoint) {
 		this.iterations = iterations;
 		this.distanceFromOldPoint = distanceFromOldPoint;
 	}
 
-	
+
 	@Override
 	public Point[] generatePoints(Point[] shapePoints) {
 		

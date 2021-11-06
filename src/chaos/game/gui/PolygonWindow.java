@@ -13,28 +13,28 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import chaos.game.ShapeGenerator;
 import chaos.game.exception.LessThanTowSidesException;
 import chaos.game.rule.Rule;
+import chaos.game.shape.generator.PolygonGenerator;
+import chaos.game.shape.generator.ShapeGenerator;
 
-public class ShapeWindow {
+public class PolygonWindow {
+	
+	private static final Point center = new Point(300,250);
+	private static final int radius = 230;
 
-	private final int sidesNumber;
+	private final PolygonGenerator polygonShapeGenerator;
 	private final Rule rule;
-
-	private final Point center = new Point(300,250);
-	private final int radius = 230;
 
 
 	/**
-	 * @param shape
-	 * @param iterationNumber
-	 * @param sidesNumber set to zero if shape is not CUSTOM
-	 * @throws LessThanTowSidesException if (shape==Shapes.CUSTOM && sidesNumber<3)
+	 * @param polygonShapeGenerator polygon in which all generated points are loked up
+	 * @param rule to apply to generate random points
+	 * @throws LessThanTowSidesException if (polygonShapeGenerator.getSidesNumber() <3)
 	 */
-	public ShapeWindow(int sidesNumber, Rule rule) throws LessThanTowSidesException {
-		if (sidesNumber<3) throw new LessThanTowSidesException(sidesNumber);
-		this.sidesNumber = sidesNumber;
+	public PolygonWindow(PolygonGenerator polygonShapeGenerator, Rule rule) throws LessThanTowSidesException {
+		if (polygonShapeGenerator.getSidesNumber() <3) throw new LessThanTowSidesException(0);
+		this.polygonShapeGenerator = polygonShapeGenerator;
 		this.rule = rule;
 		setUpWindow();
 	}
@@ -50,7 +50,7 @@ public class ShapeWindow {
 				try {
 					drawShape(g);
 				} catch (LessThanTowSidesException e) {
-					// This exception should be raised before this method
+					// This exception should have been raised before this method
 					e.printStackTrace();
 				}
 			}
@@ -62,15 +62,16 @@ public class ShapeWindow {
 
 		shapeFrame.add(shapePanel);
 		shapeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		shapeFrame.setTitle("Chaos Game: "+sidesNumber+"-side polygon" );
+		shapeFrame.setTitle("Chaos Game: "+polygonShapeGenerator );
 		shapeFrame.setLocationRelativeTo(null);
 		shapeFrame.pack();
 		shapeFrame.setVisible(true);
 	}
 
+	
 	private void drawShape(Graphics g) throws LessThanTowSidesException {
 
-		final int[][] vertices = ShapeGenerator.generate(center,radius,sidesNumber);
+		final int[][] vertices = polygonShapeGenerator.generate(center, radius);
 
 		g.setColor(Color.GRAY);
 		g.drawPolygon(vertices[0], vertices[1], vertices[1].length);
@@ -81,8 +82,8 @@ public class ShapeWindow {
 		Point[] shapePoints = new Point[vertices[0].length];
 		IntStream.range(0,vertices[0].length)
 			.mapToObj( i -> new Point(vertices[0][i], vertices[1][i]) )
-			.collect( Collectors.toList())
-			.toArray( shapePoints );
+			.collect(Collectors.toList())
+			.toArray(shapePoints);
 		
 		Point[] outputPoints = rule.generatePoints(shapePoints);
 

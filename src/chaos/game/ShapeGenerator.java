@@ -10,7 +10,7 @@ public class ShapeGenerator {
 	private static final double fullTurn = Math.toRadians(360);
 	private static final double theta = Math.toRadians(90);
 	
-	public static int[][] generate(Point center, int radius, int sidesNumber ) throws LessThanTowSidesException {
+	public static int[][] generateRegularPolygon(Point center, int radius, int sidesNumber ) throws LessThanTowSidesException {
 		if (sidesNumber<3) throw new LessThanTowSidesException(sidesNumber);
 		
 		final int[][] shapePoints = new int[2][sidesNumber];
