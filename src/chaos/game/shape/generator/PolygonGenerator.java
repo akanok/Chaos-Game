@@ -18,7 +18,7 @@ public abstract class PolygonGenerator implements ShapeGenerator {
 	}
 
 	
-	public int getSidesNumber() {
+	public final int getSidesNumber() {
 		return sidesNumber;
 	}
 	

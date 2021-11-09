@@ -13,7 +13,7 @@ public class CustomShape extends PolygonGenerator {
 	}
 	
 	@Override
-	public void setSidesNumber(int sidesNumber) {
+	public final void setSidesNumber(int sidesNumber) {
 		super.setSidesNumber(sidesNumber);
 	}
 	
