@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 import chaos.game.exception.LessThanTowSidesException;
 import chaos.game.rule.Rule;
 import chaos.game.shape.generator.PolygonGenerator;
-import chaos.game.shape.generator.ShapeGenerator;
 
 public class PolygonWindow {
 	
@@ -33,7 +32,7 @@ public class PolygonWindow {
 	 * @throws LessThanTowSidesException if (polygonShapeGenerator.getSidesNumber() <3)
 	 */
 	public PolygonWindow(PolygonGenerator polygonShapeGenerator, Rule rule) throws LessThanTowSidesException {
-		if (polygonShapeGenerator.getSidesNumber() <3) throw new LessThanTowSidesException(0);
+		if (polygonShapeGenerator.getSidesNumber() <3) throw new LessThanTowSidesException(polygonShapeGenerator.getSidesNumber());
 		this.polygonShapeGenerator = polygonShapeGenerator;
 		this.rule = rule;
 		setUpWindow();

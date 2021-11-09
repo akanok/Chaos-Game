@@ -6,7 +6,7 @@ import java.awt.Point;
 public interface Rule {
 	
 	public Point[] generatePoints(Point[] shapePoints);
-	
-	public void setParameters(int iterations, double distanceFromOldPoint);
+
+	public Rule createNewWith(int iterations, double distanceFromOldPoint);
 
 }

@@ -3,6 +3,8 @@ package chaos.game.shape.generator;
 import java.awt.Point;
 import java.util.stream.IntStream;
 
+import chaos.game.rule.Rule;
+
 
 public abstract class PolygonGenerator implements ShapeGenerator {
 
@@ -10,21 +12,20 @@ public abstract class PolygonGenerator implements ShapeGenerator {
 	private static final double theta = Math.toRadians(90);
 
 	private int sidesNumber;
-
 	
-	public void setSidesNumber(int sidesNumber) {
+	protected PolygonGenerator(int sidesNumber) {
 		this.sidesNumber = sidesNumber;
 	}
-	
+
 	
 	public int getSidesNumber() {
 		return sidesNumber;
 	}
 	
+	protected void setSidesNumber(int sidesNumber) {
+		this.sidesNumber = sidesNumber;
+	}
 	
-
-
-
 
 	@Override
 	public int[][] generate(Point center, int radius) {
@@ -44,8 +45,7 @@ public abstract class PolygonGenerator implements ShapeGenerator {
 		return theta + angle*i + Math.toRadians( (sidesNumber%2==0)?( (sidesNumber%4==0)?45:90 ):180 );
 	}
 
-
-
-
-
 }
+
+
+

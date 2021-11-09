@@ -5,8 +5,7 @@ import chaos.game.shape.generator.PolygonGenerator;
 public class Square extends PolygonGenerator {
 
 	public Square() {
-		super();
-		super.setSidesNumber(4);
+		super(4);
 	}
 	
 	@Override

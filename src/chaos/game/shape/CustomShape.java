@@ -5,11 +5,15 @@ import chaos.game.shape.generator.PolygonGenerator;
 public class CustomShape extends PolygonGenerator {
 
 	public CustomShape() {
-		super();
+		super(0);
 	}
 	
 	public CustomShape(int sidesNumber) {
-		super();
+		super(sidesNumber);
+	}
+	
+	@Override
+	public void setSidesNumber(int sidesNumber) {
 		super.setSidesNumber(sidesNumber);
 	}
 	

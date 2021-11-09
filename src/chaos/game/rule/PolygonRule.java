@@ -6,21 +6,20 @@ import java.util.Random;
 public abstract class PolygonRule implements Rule {
 
 	private final Random randomGenerator = new Random();
-	private int iterations;
-	private double distanceFromOldPoint;
+	private final int iterations;
+	private final double distanceFromOldPoint;
 
 	
-	protected PolygonRule() {
-		super();
-	}
-
-
-	@Override
-	public final void setParameters(int iterations, double distanceFromOldPoint) {
+	protected PolygonRule(int iterations, double distanceFromOldPoint) {
 		this.iterations = iterations;
 		this.distanceFromOldPoint = distanceFromOldPoint;
 	}
 
+	protected PolygonRule() {
+		this.iterations = 0;
+		this.distanceFromOldPoint = 0;
+	}
+	
 
 	@Override
 	public Point[] generatePoints(Point[] shapePoints) {
