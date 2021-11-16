@@ -6,10 +6,10 @@ import chaos.game.gui.MainWindow;
 import chaos.game.rule.Rule;
 import chaos.game.rule.SquareRule;
 import chaos.game.rule.TriangleRule;
-import chaos.game.shape.CustomShape;
-import chaos.game.shape.Square;
-import chaos.game.shape.Triangle;
 import chaos.game.shape.generator.ShapeGenerator;
+import chaos.game.shape.shapes.CustomShape;
+import chaos.game.shape.shapes.Square;
+import chaos.game.shape.shapes.Triangle;
 
 public class Main { 
 

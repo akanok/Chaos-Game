@@ -3,8 +3,6 @@ package chaos.game.shape.generator;
 import java.awt.Point;
 import java.util.stream.IntStream;
 
-import chaos.game.rule.Rule;
-
 
 public abstract class PolygonGenerator implements ShapeGenerator {
 

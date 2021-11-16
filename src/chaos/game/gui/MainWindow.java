@@ -5,8 +5,6 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -21,13 +19,13 @@ import javax.swing.text.NumberFormatter;
 
 import chaos.game.exception.LessThanTowSidesException;
 import chaos.game.rule.Rule;
-import chaos.game.shape.CustomShape;
-import chaos.game.shape.Triangle;
+import chaos.game.shape.ShapeActionOnSelectionVisitor;
 import chaos.game.shape.generator.PolygonGenerator;
 import chaos.game.shape.generator.ShapeGenerator;
+import chaos.game.shape.shapes.CustomShape;
 
 
-public class MainWindow implements ActionListener {
+public class MainWindow implements ActionListener, WindowVisitor {
 
 	private final JComboBox<ShapeGenerator> shapeMenu;
 	private final JLabel sidesLabel;
@@ -52,7 +50,12 @@ public class MainWindow implements ActionListener {
 		mainPanel.setLayout( new GridLayout(5,2,5,5) );
 
 		final JLabel shapeLabel = new JLabel("Select shape: ", SwingConstants.CENTER);
-		shapeMenu.addActionListener( shapeMenuSelectionListener() );
+		shapeMenu.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				guiSetEmbleDisableItems();
+			}
+		} );
 		mainPanel.add(shapeLabel);
 		mainPanel.add(shapeMenu);
 
@@ -130,33 +133,39 @@ public class MainWindow implements ActionListener {
 
 	}
 
+	
+	private void guiSetEmbleDisableItems() {
+		((ShapeActionOnSelectionVisitor)shapeMenu.getSelectedItem()).accept(this);
+	}
 
-	private ActionListener shapeMenuSelectionListener() {
-		
-		return new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
 
 	
-				if (shapeMenu.getSelectedItem() instanceof CustomShape) {
-					sidesLabel.setEnabled(true);
-					sidesNumber.setEnabled(true);
-					ruleMenu.setSelectedIndex(1);
-				} else {
-					sidesLabel.setEnabled(false);
-					sidesNumber.setEnabled(false);
-					sidesNumber.setText(null);
-					if (shapeMenu.getSelectedItem() instanceof Triangle) {
-						ruleMenu.setSelectedIndex(0);
-					} else {
-						ruleMenu.setSelectedIndex(1);
-					}
-				}
-				
-			}
-		};
+	@Override
+	public void visitTriangle() {
+		disableSideLabelAndTextField();
+		ruleMenu.setSelectedIndex(0); // this only works as intended if the rules passed are in this order [0]=TriangleRule, [1]SquareRule
+	}
+
+	@Override
+	public void visitSquare() {
+		disableSideLabelAndTextField();
+		ruleMenu.setSelectedIndex(1); // this only works as intended if the rules passed are in this order [0]=TriangleRule, [1]SquareRule
 		
+	}
+
+	@Override
+	public void visitCustomShape() {
+		sidesLabel.setEnabled(true);
+		sidesNumber.setEnabled(true);
+		ruleMenu.setSelectedIndex(1); // this only works as intended if the rules passed are in this order [0]=TriangleRule, [1]SquareRule
+	}
+	
+	
+	
+	private void disableSideLabelAndTextField() {
+		sidesLabel.setEnabled(false);
+		sidesNumber.setEnabled(false);
+		sidesNumber.setText("");
 	}
 
 
