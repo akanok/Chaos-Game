@@ -29,7 +29,6 @@ import chaos.game.shape.generator.ShapeGenerator;
 
 public class MainWindow implements ActionListener {
 
-	private static final String CustomShape = null;
 	private final JComboBox<ShapeGenerator> shapeMenu;
 	private final JLabel sidesLabel;
 	private final JFormattedTextField sidesNumber, iterationsNumber;
@@ -53,7 +52,7 @@ public class MainWindow implements ActionListener {
 		mainPanel.setLayout( new GridLayout(5,2,5,5) );
 
 		final JLabel shapeLabel = new JLabel("Select shape: ", SwingConstants.CENTER);
-		shapeMenu.addItemListener( shapeMenuselectionListener() );
+		shapeMenu.addActionListener( shapeMenuSelectionListener() );
 		mainPanel.add(shapeLabel);
 		mainPanel.add(shapeMenu);
 
@@ -100,26 +99,25 @@ public class MainWindow implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		
-		// TODO improve code quality
-		
-		int sides =  (sidesNumber.getValue()==null)?0:(int)sidesNumber.getValue();
-
+			
 		PolygonGenerator polygonGenerator = (PolygonGenerator)shapeMenu.getSelectedItem();
-		if (polygonGenerator instanceof CustomShape)
+		int sides = 0;
+		
+		if (sidesNumber.isEnabled()) {
+			sides = (sidesNumber.getValue()==null)?0:(int)sidesNumber.getValue();
 			((CustomShape)polygonGenerator).setSidesNumber(sides);
+		}
+		
+		
+		Rule rule = (Rule)ruleMenu.getSelectedItem();
 		
 		int iterations = (iterationsNumber.getValue() ==null)?0:(int)iterationsNumber.getValue();
-		
-		Rule rule = ((Rule)ruleMenu.getSelectedItem()).createNewWith(iterations, 0.5);
-		
-		
 		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new PolygonWindow(polygonGenerator, rule);
+					new PolygonWindow(polygonGenerator, rule, iterations);
 				} catch (LessThanTowSidesException e) {
 					JOptionPane.showMessageDialog(null,
 							("The number of sides is: " + e.getSidesNumber() + "\nA polygon must have at least 3 sides!"),
@@ -133,14 +131,14 @@ public class MainWindow implements ActionListener {
 	}
 
 
-	private ItemListener shapeMenuselectionListener() {
+	private ActionListener shapeMenuSelectionListener() {
 		
-		// TODO improve code quality: change code logic without changing the functionaity
-		
-		return new ItemListener() {
+		return new ActionListener() {
+			
 			@Override
-			public void itemStateChanged(ItemEvent ie) {
+			public void actionPerformed(ActionEvent e) {
 
+	
 				if (shapeMenu.getSelectedItem() instanceof CustomShape) {
 					sidesLabel.setEnabled(true);
 					sidesNumber.setEnabled(true);
@@ -155,13 +153,9 @@ public class MainWindow implements ActionListener {
 						ruleMenu.setSelectedIndex(1);
 					}
 				}
-
+				
 			}
-
 		};
-		
-		
-		
 		
 	}
 

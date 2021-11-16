@@ -24,19 +24,23 @@ public class PolygonWindow {
 
 	private final PolygonGenerator polygonShapeGenerator;
 	private final Rule rule;
-
+	private final int iterations;
 
 	/**
 	 * @param polygonShapeGenerator polygon in which all generated points are loked up
 	 * @param rule to apply to generate random points
-	 * @throws LessThanTowSidesException if (polygonShapeGenerator.getSidesNumber() <3)
+	 * @param iterations number of red points which will be generated
+	 * @throws LessThanTowSidesException if (polygonShapeGenerator.getSidesNumber() <3), a polygon always has at least 2 sides
 	 */
-	public PolygonWindow(PolygonGenerator polygonShapeGenerator, Rule rule) throws LessThanTowSidesException {
+	public PolygonWindow(PolygonGenerator polygonShapeGenerator, Rule rule, int iterations) throws LessThanTowSidesException {
 		if (polygonShapeGenerator.getSidesNumber() <3) throw new LessThanTowSidesException(polygonShapeGenerator.getSidesNumber());
 		this.polygonShapeGenerator = polygonShapeGenerator;
 		this.rule = rule;
+		this.iterations = iterations;
+				
 		setUpWindow();
 	}
+	
 
 
 	private void setUpWindow() {
@@ -84,7 +88,7 @@ public class PolygonWindow {
 			.collect(Collectors.toList())
 			.toArray(shapePoints);
 		
-		Point[] outputPoints = rule.generatePoints(shapePoints);
+		Point[] outputPoints = rule.generatePoints(shapePoints,iterations);
 
 		g.setColor(Color.RED);
 		Stream.of(outputPoints).forEach( p -> g.drawLine(p.x, p.y, p.x, p.y) );

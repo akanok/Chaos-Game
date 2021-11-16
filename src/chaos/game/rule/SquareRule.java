@@ -6,13 +6,10 @@ import java.util.Random;
 public class SquareRule extends PolygonRule{
 
 
-	public SquareRule(int iterations, double distanceFromOldPoint) {
-		super(iterations, distanceFromOldPoint);
+	public SquareRule(double distanceFromOldPoint) {
+		super(distanceFromOldPoint);
 	}
 
-	public SquareRule() {
-		super();
-	}
 
 	
 	@Override
@@ -23,11 +20,6 @@ public class SquareRule extends PolygonRule{
 		} while (newVertex.equals(previousVertex));
 		
 		return newVertex;
-	}
-
-	@Override
-	public SquareRule createNewWith(int iterations, double distanceFromOldPoint) {
-		return new SquareRule(iterations, distanceFromOldPoint);
 	}
 	
 	

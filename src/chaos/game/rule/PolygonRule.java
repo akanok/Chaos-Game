@@ -5,24 +5,17 @@ import java.util.Random;
 
 public abstract class PolygonRule implements Rule {
 
-	private final Random randomGenerator = new Random();
-	private final int iterations;
+	private static final Random randomGenerator = new Random();
 	private final double distanceFromOldPoint;
 
 	
-	protected PolygonRule(int iterations, double distanceFromOldPoint) {
-		this.iterations = iterations;
+	protected PolygonRule( double distanceFromOldPoint) {
 		this.distanceFromOldPoint = distanceFromOldPoint;
 	}
 
-	protected PolygonRule() {
-		this.iterations = 0;
-		this.distanceFromOldPoint = 0;
-	}
-	
 
 	@Override
-	public Point[] generatePoints(Point[] shapePoints) {
+	public Point[] generatePoints(Point[] shapePoints, int iterations) {
 		
 		Point[] outputPoints = new Point[iterations];
 		

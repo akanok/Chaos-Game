@@ -16,9 +16,8 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Rule[] rules = new Rule[]{new TriangleRule(), new SquareRule()};
+		Rule[] rules = new Rule[]{new TriangleRule(0.5), new SquareRule(0.5)};
 		ShapeGenerator[]  shapes = new ShapeGenerator[]{ new Triangle(), new Square(), new CustomShape() };
-
 
 		// Launch the application
 		EventQueue.invokeLater(new Runnable() {
